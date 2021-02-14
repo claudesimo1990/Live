@@ -1,0 +1,173 @@
+models:
+  User:
+    name: string
+    email: string
+    email_verified_at: nullable timestamp
+    google_id: string
+    facebbook_id: string
+    avatar: string
+    avatar_original: nullable string
+    password: nullable
+    relationships:
+      hasOne: Profile
+      hasMany: Coli, Travel, Comment
+
+  Profile:
+    prenom: string
+    User_id: id foreign:users
+    birthDay: DateTime
+    ville: string
+    pays: string
+    rue: string
+    phone: string
+    isVerified: Boolean
+    avatar: string
+    avatar_original: nullable string
+    relationships:
+      belongsTo: User
+
+  Message:
+    User_id: id foreign:users
+    addressTo: User:id
+    content: longtext
+    relationships:
+      belongsTo: User
+
+  Admin:
+    name: string
+    email: string
+    avatar: string
+    avatar_original: nullable string
+    password: nullable
+
+  Coli:
+    name: string
+    User_id: id foreign:users
+    categorie_id: categories:id
+    vilDepart: string
+    vilArrive: string
+    dateDepart: Datetime
+    dateArrive: Datetime
+    content: longtext
+    kilo: Integer
+    prix: Integer
+    isCourrier: Boolean
+    isvalise: Boolean
+    photo: string
+    published_at: nullable timestamp
+    relationships:
+      belongsTo: User, Categorie
+      hasMany: Comment
+
+  Travel:
+    name: string
+    User_id: id foreign:users
+    categorie_id: categories:id
+    vilDepart: string
+    vilArrive: string
+    dateDepart: Datetime
+    dateArrive: Datetime
+    content: longtext
+    kiloAvalable: Integer
+    prixKilo: Integer
+    hasCourrier: Boolean
+    prixCourrier: Integer
+    compagnie: String
+    photoBielletAvion: string
+    published_at: nullable timestamp
+    relationships:
+      belongsTo: User, Categorie
+      hasMany: Comment
+
+  Comment:
+    name: string
+    User_id: id foreign:users
+    travel_id: nullable Travel:id
+    coli_id: nullable Coli:id
+    content: string
+    relationships:
+      belongsTo: Coli,Travel
+      hasOne: User
+
+  Categorie:
+    name: string
+    content: string
+    relationships:
+      hasMany: Coli,Travel
+
+controllers:
+  Coli:
+    index:
+      query: all
+      render: coli.index with:posts coli.show with:post coli.create coli.update with:post
+
+    store:
+      validate: name, vilDepart, vilArrive, dateDepart, content, kilo, prix
+      save: Coli
+      send: ReviewNotification to:coli.author with:coli
+      dispatch: SyncMedia with:coli
+      fire: NewColi with:coli
+      flash: coli.name
+      redirect: coli.index
+
+  Travel:
+    create:
+      query: all
+      render: travel.create
+    update:
+      render: travel.create with:travel
+    store:
+      validate: name, vilDepart, vilArrive, dateDepart, content, kilo, prixCourrier, compagnie, photoBielletAvion
+      save: travel
+      send: ReviewNotification to:travel.author with:travel
+      dispatch: SyncMedia with:travel
+      fire: NewTravel with:travel
+      flash: travel.name
+      redirect: travel.index
+
+  Profile:
+    create:
+      query: all
+      render: Profile.create
+    update:
+      render: profile.create with:profile
+    show:
+      render: profile.show with:profile
+    store:
+      validate: prenom, birthDay, ville, pays, rue
+      save: profile
+      send: ReviewNotification to:profile.author with:profile
+      dispatch: SyncMedia with:profile
+      fire: NewProfile with:profile
+      flash: profile.name
+      redirect: profile.index
+
+  Comment:
+    create:
+      query: all
+      render: comment.create
+    update:
+      render: comment.create with:profile
+    store:
+      validate: content
+      save: comment
+      send: ReviewNotification to:comment.author with:comment
+      dispatch: SyncMedia with:comment
+      fire: Newcomment with:comment
+      flash: comment.name
+      redirect: comment.index
+
+  Message:
+    create:
+      query: all
+      render: message.create
+    update:
+      render: message.create with:profile
+    store:
+      validate: content, addressTo, user_id
+      save: message
+      send: ReviewNotification to:message.author with:message
+      dispatch: SyncMedia with:message
+      fire: Newmessage with:message
+      flash: message.name
+      redirect: message.index
