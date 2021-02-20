@@ -6,40 +6,40 @@
             <h2 class="text-center title__annonce">Etez vous voyageur?</h2>
         </div>
         <div class="row border my-3 py-3">
-            <div class="col-md-2">    
+            <div class="col-md-2">
                  <div class="numberCircle">Step 1</div>
             </div>
                 <div class="col-md-10">
                     <h4 class="border-2">Poster un trajet</h4>
                 <p>Inserez dans Formulaire les elements relatifs à votre voyge. C' est à la date, lieu depart et d'arrivve, le nombre de kilo a transporter et le prix par kilo. Ainsi que le prix du courrier.
-                Ensuite telecharger votre billet d'avion et donnez plus d'information sur votre voyage sur le lieu de rencontre ou bien sur le type de colis à transporter</p>        
+                Ensuite telecharger votre billet d'avion et donnez plus d'information sur votre voyage sur le lieu de rencontre ou bien sur le type de colis à transporter</p>
                 </div>
         </div>
             <!-- 2 -->
           <div class="row border my-3 py-3">
-            <div class="col-md-2">    
+            <div class="col-md-2">
                  <div class="numberCircle">Step 2</div>
             </div>
                 <div class="col-md-10">
                     <h4 class="border-2">Confirmation de votre voyage</h4>
                      <p>Votre voyage est ensuite confirmer, afin de valider la fiablite de votre voyage.
- </p>       
+ </p>
                 </div>
         </div>
         <!-- 3 -->
            <div class="row border my-3 py-3">
-            <div class="col-md-2">    
+            <div class="col-md-2">
                  <div class="numberCircle">Step 3</div>
             </div>
                 <div class="col-md-10">
                     <h4 class="border-2">Reservation</h4>
                                     <p>Lorsqu'un expediteur reserve vos colis. Nous vous transmettons par mail son numero de telefone.</p>
-        
+
                 </div>
         </div>
         <!-- 4 -->
            <div class="row border my-3 py-3">
-            <div class="col-md-2">    
+            <div class="col-md-2">
                  <div class="numberCircle">Step 4</div>
             </div>
                 <div class="col-md-10">
@@ -49,7 +49,7 @@
         </div>
         <!--5  -->
            <div class="row border my-3 py-3">
-            <div class="col-md-2">    
+            <div class="col-md-2">
                  <div class="numberCircle">Step 5</div>
             </div>
                 <div class="col-md-10">
@@ -69,8 +69,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./../../sass/_variables.scss";
+
 .subtitle__annonce {
-    color: $quigo-second;
+    color: #0c2e8a;
 }
+
 </style>

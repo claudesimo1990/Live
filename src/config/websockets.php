@@ -29,7 +29,7 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'path' => env('PUSHER_APP_PATH'),
             'capacity' => null,
-            'enable_client_messages' => true,
+            'enable_client_messages' => false,
             'enable_statistics' => true,
         ],
     ],
@@ -80,6 +80,12 @@ return [
          * `WebSocketsStatisticsEntry` provided by this package.
          */
         'model' => \BeyondCode\LaravelWebSockets\Statistics\Models\WebSocketsStatisticsEntry::class,
+
+        /**
+         * The Statistics Logger will, by default, handle the incoming statistics, store them
+         * and then release them into the database on each interval defined below.
+         */
+        'logger' => BeyondCode\LaravelWebSockets\Statistics\Logger\HttpStatisticsLogger::class,
 
         /*
          * Here you can specify the interval in seconds at which statistics should be logged.

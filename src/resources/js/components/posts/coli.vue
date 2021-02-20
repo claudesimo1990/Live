@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="dateFrom">Date (Date et Heure)</label>
+                                    <label class="font-weight-bold">Date (Date et Heure)</label>
                                         <validation-provider rules="required" v-slot="{ errors }">
                                         <datetime
                                         type="datetime"
@@ -227,7 +227,7 @@
   }
 </script>
 <style lang="scss" scoped>
-.form--error {
-    color: red;
-}
+    .form--error {
+        color: red;
+    }
 </style>

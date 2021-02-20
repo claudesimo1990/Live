@@ -1,18 +1,15 @@
 @extends('layouts.master')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('/css/login.css') }}">
-@stop
 
 @section('content')
     <main class="d-flex align-items-center min-vh-100 py-5 my-5 py-md-0">
         <div class="container">
             <div class="card login-card">
                 <div class="row no-gutters">
-                    <div class="col-md-5">
-                        <img src="{{asset('/images/imgs/login.jpeg')}}" alt="login" class="login-card-img">
+                    <div class="col-md-5 bg-poster">
+                        <img src="{{ getSectionData('about')->image }}" height="630px" alt="login" class="login-card-img" style="object-fit: cover;">
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-7 bg-poster">
                         <div class="card-body">
 
                             <div class="brand-wrapper">
@@ -21,7 +18,7 @@
 
                             <register-form></register-form>
 
-                            <p class="login-card-footer-text">deja un compte? <a href="{{ route('login') }}" class="text-reset">Login</a></p>
+                            <p class="login-card-footer-text">deja un compte? <a href="{{ route('login') }}" class="text-reset mx-3 text-uppercase border p-2">Login</a></p>
                             <div class="login-card-footer-nav block-media-login my-4">
                                 <a href="{{ route('facebook') }}" class="btn btn-block btn-social btn-facebook text-white">
                                     <span class="fa fa-facebook"></span> Continuer avec facebook

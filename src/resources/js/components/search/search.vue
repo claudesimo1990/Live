@@ -1,6 +1,6 @@
 <template>
     <div>
-    <vue-typer text='Rechercher un Voyage' caret-animation='smooth'></vue-typer>
+    <vue-typer :text="title" caret-animation='smooth'></vue-typer>
     <section class="search-sec" style="padding: 0">
         <div class="container">
             <div class="row text-center">
@@ -80,6 +80,7 @@
 
 <script>
 export default {
+    props: ['title'],
     data: function() {
         return {
             'posts': [],

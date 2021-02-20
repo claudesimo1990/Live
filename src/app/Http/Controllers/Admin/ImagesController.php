@@ -3,75 +3,51 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Images\Images;
-use Illuminate\Contracts\Filesystem\FileExistsException;
+use App\Models\Admin;
+use App\Models\ImageUpload;
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
-use Intervention\Image\ImageManagerStatic;
+use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class ImagesController extends Controller
 {
     public function create()
     {
-       return view('admin.images.create');
+        return Inertia::render('Admin/Images/create');
     }
 
     public function index()
     {
-        $imgs = Images::all();
-        return view('admin.images.index', compact('imgs'));
+        $images = ImageUpload::all();
+
+        return Inertia::render('Admin/Images/index', ['images' => $images]);
     }
 
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate([
-           'name' => 'required',
-           'target' => 'required'
-        ]);
+        $path = public_path('/Admin/Images');
+        $thumb = public_path('/Admin/Thumbails');
 
-        $target = $request->get('target');
-
-        if ($request->hasFile('file')) {
-
-            $image = $request->file('file');
-
-            $fileName = $request->get('name');
-
-            // open an image file
-            if ($request->get('target') == 'Header') {
-
-                $img = ImageManagerStatic::make($request->file('file'))->resize(600, 400)->encode('png');
-
-                Storage::disk('public')->put('Home/'.$fileName, $img);
-            }
-
-            Images::create([
-                'name' => $fileName,
-                'target' => $target,
-            ]);
-
-            flashy()->success('success');
-
-        } else {
-
-            flashy()->error('qualite d\'image pas acceptée');
+        if (! is_dir($path)) {
+            mkdir(public_path('/Admin', 0777));
+            mkdir($path, 0777);
         }
 
-        return back();
-    }
-
-    public function destroy($images)
-    {
-
-        $img = Images::find($images);
-
-        if(Storage::delete('/public/Home/'.$img->name)) {
-
-            $img->delete();
-
+        if (! is_dir($thumb)) {
+            mkdir(public_path('/Admin/Thumbails'), 0777);
         }
 
-        return back();
+        $images = Collection::wrap(request()->file('file'));
+
+        $images->each(function($image) {
+
+            $baseName = Str::random(10);
+
+            Admin::first()->createImage($image, $baseName);
+
+        });
+
+        return redirect()->route('admin.home');
     }
 }

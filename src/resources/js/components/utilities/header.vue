@@ -5,21 +5,9 @@
         </div>
     </section><!-- #intro -->
 </template>
+
 <script>
 export default {
     props: ['backgroundImage', 'title']
 }
 </script>
-
-<style lang="scss" scoped>
-@import "./../../../sass/_variables.scss";
-@import "~bootstrap/scss/bootstrap";
-
-
-.header--element {
-    @extend .bg-success, .text-white, .w-50;
-}
-h1{
-    @extend .font-weight-bold;
-}
-</style>

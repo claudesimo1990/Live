@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     @env('production')
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @endenv
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
@@ -14,42 +14,39 @@
     <meta content="" name="description">
     <link rel="icon" type="image/png" href="{{ asset('/img/cube-outline.svg') }}"/>
 
-    <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
     @yield('css')
 
-    <link href="{{'/css/app.css'}}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
 <body id="body">
 
-    <div id="app">
+<div id="main">
 
-      <alert-chat></alert-chat>
+    <alert-chat></alert-chat>
 
-        <card-user></card-user>
+    <card-user></card-user>
 
-      <b-overlay :show="getShow" rounded="sm">
+    <b-overlay :show="getShow" rounded="sm">
 
-        @include("layouts/includes/topbar")
+        <x-top-bar></x-top-bar>
+
         @include("layouts/includes/nav")
 
         <main>
-          @yield('content')
+            @yield('content')
         </main>
 
         <!-- #footer -->
         @include('layouts.includes.footer')
-        <!-- #footer -->
+         <!-- #footer -->
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-      </b-overlay>
-    </div>
+    </b-overlay>
+</div>
 
 <!-- JavaScript Libraries -->
 @yield('js')
 <script src="{{ asset("/js/app.js") }}"></script>
-<script defer src="{{ asset('./js/script.js') }}"></script>
-@stack('scripts')
-@include('flashy::message')
-
 </body>
 </html>

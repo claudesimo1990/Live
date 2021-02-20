@@ -6,27 +6,15 @@
             </div>
             <div class="block">
                 <el-timeline>
-                    <el-timeline-item timestamp="Etape 1" placement="top">
+                    <el-timeline-item v-for="step in steps" :key="step.id" :timestamp="'Etape ' + step.id" placement="top">
                         <el-card>
-                            <h4>Rechercher un voyage</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, amet commodi consectetur id impedit ipsum itaque minima nam numquam odit officiis pariatur qui quia quibusdam repellat vel veritatis voluptas voluptatem.</p>
-                        </el-card>
-                    </el-timeline-item>
-                    <el-timeline-item timestamp="Etape 2" placement="top">
-                        <el-card>
-                            <h4>S'authentifier</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus eaque esse minus, necessitatibus repellendus reprehenderit vero. Accusamus adipisci alias cum dolorum, itaque laboriosam officiis quae voluptate. Consequuntur facilis illo itaque.</p>
-                        </el-card>
-                    </el-timeline-item>
-                    <el-timeline-item timestamp="Etape 3" placement="top">
-                        <el-card>
-                            <h4>Contacter le voyageur</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam eaque eligendi ipsum itaque unde? In laboriosam praesentium reprehenderit? Architecto facere iure nihil quisquam repellat! Commodi ipsam non ut vel.</p>
+                            <h4 class="quigo-animate-class-css-element" v-html="step.title"></h4>
+                            <p class="quigo-animate-class-css-element" v-html="step.text"></p>
                         </el-card>
                     </el-timeline-item>
                     <el-timeline-item>
                         <el-card>
-                            <b-link :href="howItWork" class="btn btn-secondary btn-lg btn-block mt-4">lire la suite</b-link>
+                            <b-link :href="moreLink" class="btn btn-secondary btn-lg btn-block mt-4 quigo-animate-class-css-element">lire la suite</b-link>
                         </el-card>
                     </el-timeline-item>
                 </el-timeline>
@@ -37,16 +25,15 @@
 
 <script>
 export default {
-    props: ['howItWork']
+    props: ['steps', 'moreLink']
 
 }
 </script>
 
 <style lang="scss">
-@import "./../../../sass/_variables.scss";
 
 .how-it-work {
-    background-color: $gray-50;
+    background-color: #e9ecef;
     margin-top: 30px;
     margin-bottom: 30px;
 
@@ -57,10 +44,10 @@ export default {
 }
 
 .el-timeline-item__tail {
-    border-left: 2px solid $quigo_second;
+    border-left: 2px solid #0c2e8a;
 }
 .el-timeline-item__node {
-    background-color: $quigo;
+    background-color: #8bc73d;
 }
 
 </style>

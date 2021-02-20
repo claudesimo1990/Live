@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ImagesController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +19,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-route::get('listeNews','postController@listeNews');
+
+Route::post('/galerie/store',[ImagesController::class, 'store'])->name('Images.store');
+
+route::get('posts',[PostsController::class, 'listeNews']);

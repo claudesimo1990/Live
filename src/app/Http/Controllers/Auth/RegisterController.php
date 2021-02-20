@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Mail\welcome_email;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use App\Providers\RouteServiceProvider;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Intervention\Image\ImageManagerStatic;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
     use RegistersUsers;
 
     /**
@@ -25,10 +32,9 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-
-    public function redirectTo()
+    public function redirectTo(): string
     {
-        return route('news.index');
+        return route('posts.index');
     }
 
     /**
@@ -61,23 +67,17 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
-    protected function create(array $data)
+    protected function create(array $data): User
     {
         $imagePath = Storage::disk('uploads')->put($data['email'] . '/avatar/', $data['avatar']);
 
-        $user = User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'avatar' => 'uploads/' . $imagePath,
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
         ]);
-
-        Mail::to($user->email)->send(new welcome_email($user));
-
-        flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
-
-        return $user;
     }
 }

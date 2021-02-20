@@ -72,6 +72,9 @@
 </template>
 
 <script>
+
+import { store } from '../../../store/index'
+
     export default {
         data() {
             return {
@@ -87,15 +90,15 @@
         },
         computed: {
             display() {
-                return Store.getters.modalShow;
+                return store.getters.modalShow;
             },
             user() {
-                return Store.getters.profileUser;
+                return store.getters.profileUser;
             }
         },
         methods: {
             hide() {
-                Store.dispatch('modalShow', false);
+                store.dispatch('modalShow', false);
             }
         }
     }

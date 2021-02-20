@@ -64,7 +64,6 @@
 </script>
 
 <style lang="scss">
-    @import "./../../../sass/_variables.scss";
     .testimonials {
         min-height: 100vh;
         display: flex;
@@ -76,10 +75,10 @@
         min-height: 200px;
     }
     .quigo-background-color {
-        background-color: $quigo;
+        background-color: #8bc73d;
     }
     .blockquote-footer {
-        color: $quigo-second;
+        color: #0c2e8a;
     }
     .carousel-indicators {
        bottom: -60px;

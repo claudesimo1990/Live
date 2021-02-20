@@ -117,10 +117,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./../../sass/_variables.scss";
 
 .header-title {
-    color: $quigo-second;
+    color: #0c2e8a;
 }
 
 h1 {
@@ -137,8 +136,8 @@ h1 {
     background-color: #8bc73d;
 }
 .list-group-item.active {
-    background-color: $quigo;
-    border-color: $quigo;
+    background-color: #8bc73d;
+    border-color: #8bc73d;
 }
 
 .nav-item {

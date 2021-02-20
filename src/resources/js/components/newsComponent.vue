@@ -64,8 +64,10 @@
 </template>
 <script>
 
+Vue.component('pagination', require('laravel-vue-pagination'));
 import travel from './utilities/cards/travel'
 import coli from './utilities/cards/coli'
+import { store } from '../store/index'
 
 export default {
     props: ["keyWatch",'asset'],
@@ -96,42 +98,45 @@ export default {
             if (val == 'allNews') {
                 this.showAllNews();
                 return;
-                
+
             }
             this.sortNews(val);
-        
+
         }
 
     },
     methods: {
         sortNews: function(cat) {
             if (cat === 'travel') {
-                Store.dispatch('setOverlayShow', true);
+                store.dispatch('setOverlayShow', true);
                 axios.get('travels').then((response) => {
                     this.laravelData = response.data;
                     this.title = "Annonces de voyages";
-                    Store.dispatch('setOverlayShow', false);
+                    store.dispatch('setOverlayShow', false);
                 })
             } else if (cat === 'pack') {
-                Store.dispatch('setOverlayShow', true);
+                store.dispatch('setOverlayShow', true);
                 axios.get('packs').then((response) => {
-                    this.laravelData = response.data;
+                    this.laravelData = response;
                     this.title = "Annonces de packets";
-                    Store.dispatch('setOverlayShow', false);
+                    store.dispatch('setOverlayShow', false);
                 })
             }
         },
         showAllNews: function () {
-            axios.get('api/listeNews').then((response) => {
-                    this.laravelData = response.data;
-                    this.title = "Liste d'annonces";
-                    Store.dispatch('setOverlayShow', false);
-                })
+            store.dispatch('setOverlayShow', true);
+            axios.get('/api/posts').then((response) => {
+                this.laravelData = response;
+                this.title = "Liste d'annonces";
+                store.dispatch('setOverlayShow', false);
+            })
         },
         getResults(page = 1) {
-            axios.get('api/listeNews?page=' + page)
+            store.dispatch('setOverlayShow', true);
+            axios.get('/api/posts?page=' + page)
                 .then(response => {
                     this.laravelData = response.data;
+                    store.dispatch('setOverlayShow', false);
                 });
         }
     },
@@ -142,43 +147,11 @@ export default {
 }
 </script>
 <style>
-    .stars {
-        width: 96% !important;
-        height: 40% !important;
-    }
-    .kilo-price {
-        font-size: 17px;
-        font-weight: bold;
-        padding-top: 12px;
-        height: 50px;
-        width: 50px;
-        text-align: center;
-        background-color: #8bc73d;
-        color: white;
-        border-radius: 50%;
-        display: inline-block;
-        margin-top: -7px;
-    }
-    .contact-btn {
-        margin-bottom: 36px !important;
-    }
-    .packs {
-        background-color:  #8bc73d !important;
-    }
-    .icon--card {
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-    }
     span.vorHumanns {
         font-weight: bold;
         color: gray;
         position: absolute;
         bottom: 25px;
         left: 54px;
-}
-.text-content {
-    padding: 18px;
-    margin: 14px;
 }
 </style>

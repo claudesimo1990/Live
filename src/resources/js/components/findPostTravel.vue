@@ -6,7 +6,7 @@
             <h2 class="text-center title__annonce">Rechercher un Trajet un expedition</h2>
         </div>
         <div class="row border my-3 py-3">
-            <div class="col-md-2">    
+            <div class="col-md-2">
                  <div class="numberCircle">Step 1</div>
             </div>
                 <div class="col-md-10">
@@ -16,7 +16,7 @@
         </div>
             <!-- 2 -->
           <div class="row border my-3 py-3">
-            <div class="col-md-2">    
+            <div class="col-md-2">
                  <div class="numberCircle">Step 2</div>
             </div>
                 <div class="col-md-10">
@@ -25,7 +25,7 @@
                 </div>
         </div>
 
-        
+
     </div>
 </section>
 </template>
@@ -37,8 +37,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./../../sass/_variables.scss";
+
 .subtitle__annonce {
-    color: $quigo-second;
+
+    color: #0c2e8a;
 }
+
 </style>

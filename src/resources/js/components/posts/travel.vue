@@ -226,7 +226,7 @@
   }
 </script>
 <style lang="scss" scoped>
-.form--error {
-    color: red;
-}
+    .form--error {
+        color: red;
+    }
 </style>

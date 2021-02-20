@@ -74,8 +74,10 @@ export default {};
 </script>
 
 <style lang="scss">
-@import "./../../sass/_variables.scss";
+
 .subtitle__annonce {
-    color: $quigo-second;
+
+    color: #0c2e8a;
+
 }
 </style>

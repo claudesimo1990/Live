@@ -21,13 +21,11 @@
                     <form action="{{ route('admin.login') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="entrer votre email">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Entrer votre email">
                             @error('email')<span class="text-left text-red small">{{ $message }}</span>@enderror
                         </div>
                         <div class="form-group">
-                            <label for="email">Password</label>
-                            <input type="password" class="form-control" name="password" id="email" placeholder="entrer votre Mot de passe">
+                            <input type="password" class="form-control" name="password" id="email" placeholder="Entrer votre Mot de passe">
                             @error('password')<span class="text-left text-red small">{{ $message }}</span>@enderror
                         </div>
                         <div class="form-group">

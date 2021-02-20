@@ -10,8 +10,8 @@
                 <div class="col-md-6">
                     <div class="block">
                         <span class="demonstration"></span>
-                        <el-carousel height="400px">
-                            <el-carousel-item v-for="item in from" :key="item.img">
+                        <el-carousel height="300px">
+                            <el-carousel-item v-for="(item, index) in departs" :key="item.img + index  + 1">
                                 <h2 class="text-item-color font-weight-bold text-center">{{ item.name }}</h2>
                                 <el-image :src="item.img"></el-image>
                             </el-carousel-item>
@@ -21,8 +21,8 @@
                 <div class="col-md-6">
                     <div class="block">
                         <span class="demonstration"></span>
-                        <el-carousel trigger="click" height="400px">
-                            <el-carousel-item v-for="item in to" :key="item.img">
+                        <el-carousel trigger="click" height="300px">
+                            <el-carousel-item v-for="(item, index) in arrivees" :key="item.img + index">
                                 <h2 class="text-item-color font-weight-bold text-center">{{ item.name }}</h2>
                                 <el-image :src="item.img"></el-image>
                             </el-carousel-item>
@@ -37,19 +37,33 @@
 <script>
 
     export default {
+        props: ['destinations'],
         data: function () {
             return {
-                from: [
-                    {name: 'Douala', img: '/images/imgs/popularDestination/douala.png'},
-                    {name: 'Yaounde', img: '/images/imgs/popularDestination/Yaounde_2.jpeg'},
-                    {name: 'Paris', img: '/images/imgs/popularDestination/paris.jpeg'}
-                ],
-                to: [
-                    {name: 'Paris', img: '/images/imgs/popularDestination/paris.jpeg'},
-                    {name: 'Berlin', img: '/images/imgs/popularDestination/berlin.jpeg'},
-                    {name: 'Yaounde', img: '/images/imgs/popularDestination/Yaounde_2.jpeg'}
-                ]
+                departs: [],
+                arrivees: []
             }
+        },
+        methods: {
+
+            filterData: function() {
+
+                const el = this
+
+                $.each(this.destinations, function(key, value) {
+
+                    el.departs.push({name: value.city_from, img: value.image_from})
+
+                    el.arrivees.push({name: value.city_to, img: value.image_to})
+
+                });
+        },
+
+        },
+
+        mounted() {
+
+            this.filterData();
         }
     }
 

@@ -2,10 +2,8 @@
 
 namespace App\Exceptions;
 
-use Exception;
-use Throwable;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -28,44 +26,15 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-        }
-        if ($request->is('admin') || $request->is('admin/*')) {
-            return redirect()->guest('/login/admin');
-        }
-        if ($request->is('writer') || $request->is('writer/*')) {
-            return redirect()->guest('/login/writer');
-        }
-        return redirect()->guest(route('login'));
-    }
-
     /**
-     * Report or log an exception.
+     * Register the exception handling callbacks for the application.
      *
-     * @param Throwable $exception
      * @return void
-     *
-     * @throws Throwable
      */
-    public function report(Throwable $exception)
+    public function register()
     {
-        parent::report($exception);
-    }
-
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param Throwable $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws Throwable
-     */
-    public function render($request, Throwable $exception)
-    {
-        return parent::render($request, $exception);
+        $this->reportable(function (Throwable $e) {
+            //
+        });
     }
 }

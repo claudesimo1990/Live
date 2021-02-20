@@ -57,13 +57,3 @@ export default {
 
 }
 </script>
-
-<style>
-.zoom {
-    transition: transform .2s;
-}
-.zoom:hover {
-  transform: scale(3.5);
-  z-index: 1040;
-}
-</style>
