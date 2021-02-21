@@ -88,7 +88,7 @@ if (app) {
         render: h => h(App, {
             props: {
             initialPage: JSON.parse(app.dataset.page),
-            resolveComponent: name => require(`./Pages/${name}`).default,
+            resolveComponent: name => require(`./pages/${name}`).default,
             },
         }),
     }).$mount(app)
