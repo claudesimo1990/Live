@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\ImagesInterface\ImagesInterface;
 use App\Models\ImageUpload;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
@@ -12,7 +13,7 @@ use Intervention\Image\Facades\Image;
 
 class Admin extends Authenticatable implements ImagesInterface
 {
-    use Notifiable;
+    use HasFactory,Notifiable;
 
     protected $guarded = [];
 
