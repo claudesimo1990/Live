@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
+window.Vue = import('vue');
 
 import { BootstrapVue }  from 'bootstrap-vue';
 import Notifications from 'vue-notification';
@@ -20,7 +20,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'vue-datetime/dist/vue-datetime.css';
 
 
-window.moment = require('moment');
+import moment0 from "moment";
+
+window.moment = moment0;
 
 InertiaProgress.init()
 
