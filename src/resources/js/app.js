@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-window.Vue = require('vue').default;
+window.Vue = require('vue');
 
 import { BootstrapVue }  from 'bootstrap-vue';
 import Notifications from 'vue-notification';
