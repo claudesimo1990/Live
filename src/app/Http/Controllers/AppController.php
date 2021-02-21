@@ -21,7 +21,7 @@ class AppController extends Controller
         $destinations = Destination::all();
         $testimonials = Testimonial::limit(4)->get();
 
-        return view('app.welcome', [
+        return view('App.welcome', [
             'header' => $header,
             'about' => $about,
             'news' => $news,
