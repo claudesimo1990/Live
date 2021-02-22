@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Admin;
 use App\Models\ImageUpload;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -24,23 +25,9 @@ class ImagesController extends Controller
         return Inertia::render('Admin/Images/index', ['images' => $images]);
     }
 
-    public function store()
+    public function store(): RedirectResponse
     {
-        $path = public_path('/Admin/Images');
-        $thumb = public_path('/Admin/Thumbails');
-
-        if (! is_dir($path)) {
-
-            if (! is_dir('/Admin')){
-
-                mkdir(public_path('/Admin', 0777), true);
-            }
-            mkdir($path, 0777, true);
-        }
-
-        if (! is_dir($thumb)) {
-            mkdir(public_path('/Admin/Thumbails'), 0777, true);
-        }
+        Admin::first()->initDirectory();
 
         $images = Collection::wrap(request()->file('file'));
 

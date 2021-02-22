@@ -32,7 +32,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    public function redirectTo()
+    public function redirectTo(): string
     {
         return route('posts.index');
     }
@@ -67,9 +67,9 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return User
      */
-    protected function create(array $data)
+    protected function create(array $data): User
     {
         $imagePath = Storage::disk('uploads')->put($data['email'] . '/avatar/', $data['avatar']);
 
