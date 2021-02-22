@@ -33,13 +33,13 @@ class ImagesController extends Controller
 
             if (! is_dir('/Admin')){
 
-                mkdir(public_path('/Admin', 0777));
+                mkdir(public_path('/Admin', 0777), true);
             }
-            mkdir($path, 0777);
+            mkdir($path, 0777, true);
         }
 
         if (! is_dir($thumb)) {
-            mkdir(public_path('/Admin/Thumbails'), 0777);
+            mkdir(public_path('/Admin/Thumbails'), 0777, true);
         }
 
         $images = Collection::wrap(request()->file('file'));
