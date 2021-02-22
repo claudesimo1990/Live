@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class Admin extends Authenticatable implements ImagesInterface
@@ -24,37 +25,32 @@ class Admin extends Authenticatable implements ImagesInterface
 
     public function initDirectory()
     {
-        $path = storage_path('/Admin/Images');
-        $thumb = storage_path('/Admin/Thumbails');
-
-        if (! is_dir($path)) {
-            mkdir(storage_path('/Admin', 0777));
-            mkdir($path, 0777);
-        }
-
-        if (! is_dir($thumb)) {
-            mkdir(storage_path('/Admin/Thumbails'), 0777);
-        }
+        //
     }
 
     public function createImage(UploadedFile $image, $basename)
     {
             $original = $basename . '.' . $image->getClientOriginalExtension();
+
             $thumbmail = $basename . '_thumb.' . $image->getClientOriginalExtension();
 
-            Image::make($image)
-                ->fit(250,250)
-                ->save(storage_path('/Admin/Thumbails/') . $thumbmail, 80);
+            $img = Image::make($image)->fit(250,250, function ($constraint) {
 
-            $image->move(storage_path('/Admin/Images'), $original);
+                $constraint->aspectRatio();
+
+            });
+
+            $img->stream();
+
+            Storage::disk('uploads')->put('/Admin/Thumbails'. '/' .$thumbmail, $img);
+
+            $image->storeAs('/Admin/Images', $original, 'uploads');
 
             // store data into database
             $this->images()->create([
-                'original' => 'storage/Admin/Images/'. $original,
-                'thumbail' => 'storage/Admin/Thumbails/'. $thumbmail
+                'original' => '/uploads/Admin/Images/'. $original,
+                'thumbail' => '/uploads/Admin/Thumbails/'. $thumbmail
             ]);
-
-            return response('Ok', 200);
     }
 
     public function deleteImage(ImageUpload $image)

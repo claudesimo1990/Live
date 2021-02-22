@@ -27,8 +27,6 @@ class ImagesController extends Controller
 
     public function store(): RedirectResponse
     {
-        Admin::first()->initDirectory();
-
         $images = Collection::wrap(request()->file('file'));
 
         $images->each(function($image) {
