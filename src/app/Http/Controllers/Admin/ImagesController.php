@@ -30,7 +30,11 @@ class ImagesController extends Controller
         $thumb = public_path('/Admin/Thumbails');
 
         if (! is_dir($path)) {
-            mkdir(public_path('/Admin', 0777));
+
+            if (! is_dir('/Admin')){
+
+                mkdir(public_path('/Admin', 0777));
+            }
             mkdir($path, 0777);
         }
 
