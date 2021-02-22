@@ -26,22 +26,8 @@ class Admin extends Authenticatable implements ImagesInterface
 
     public function initDirectory()
     {
-        $images = public_path('Admin/uploads/Images');
-        $thumb = public_path('Admin/uploads/Thumbails');
-
-        if (!File::isDirectory($images)) {
-
-            File::makeDirectory($images, 0777, true, true);
-
-        }
-
-        if (!File::isDirectory($thumb)) {
-
-            File::makeDirectory($thumb, 0777, true, true);
-
-        }
-
-
+        Storage::makeDirectory('Admin/uploads/Images');
+        Storage::makeDirectory('Admin/uploads/Thumbails');
     }
 
     public function createImage(UploadedFile $image, $basename)
