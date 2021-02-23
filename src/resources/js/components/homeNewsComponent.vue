@@ -10,7 +10,7 @@
                 <el-carousel-item v-for="item in posts" :key="item.id">
                     <el-card class="box-card">
                         <div slot="header" class="clearfix d-flex align-items-center justify-content-center">
-                            <img class="quigo-animate-class-css-element avatar" :src="item.user.default_avatar" alt="item.user.default_avatar">
+                            <img class="quigo-animate-class-css-element avatar" :src="item.user.avatar" alt="item.user.default_avatar">
                         </div>
                         <div class="text item">
                             <el-row>
