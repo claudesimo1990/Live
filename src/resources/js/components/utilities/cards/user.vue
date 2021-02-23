@@ -2,7 +2,7 @@
     <a href="#" @click.prevent="displayProfile()">
         <div class="border my-3 px-2 rounded">
             <div class="profile-block">
-                <img class="rounded-circle z-depth-2 mt-1 ml-1 user__bild_post" width="96" alt="100x100" :src="user.default_avatar"
+                <img class="rounded-circle z-depth-2 mt-1 ml-1 user__bild_post" width="96" alt="100x100" :src="user.avatar"
                      data-holder-rendered="true">
                 <h5 class="text-start mt-2"><b-badge variant="Light">{{ user.name }}</b-badge></h5>
                 <div class="notice justify-center text-center notice-success stars">

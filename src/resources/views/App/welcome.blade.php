@@ -33,7 +33,7 @@
                                 {{ $item->content }}
                             <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="assets/img/quote-sign-right.png">
                         </p>
-                        <img src="{{ $item->user->default_avatar }}" class="testimonial-img quigo-animate-class-css-element" alt="{{ $item->photo }}">
+                        <img src="{{ $item->user->avatar }}" class="testimonial-img quigo-animate-class-css-element" alt="{{ $item->user->avatar }}">
                         <h3 class="quigo-animate-class-css-element">{{ $item->user->name}}</h3>
                         <h4 class="quigo-animate-class-css-element">{{ $item->user->email}}</h4>
                     </div>
