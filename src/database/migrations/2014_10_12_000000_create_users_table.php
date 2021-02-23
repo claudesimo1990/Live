@@ -20,10 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
-            $table->string('avatar')->nullable();
-            $table->string('avatar_original')->nullable();
+            $table->string('avatar')->nullable()->default('/uploads/default.jpg');
+            $table->string('social_avatar')->nullable();
             $table->string('password')->nullable();
-            $table->boolean('is_admin')->default(0);
             $table->string('remember_token')->nullable();
             $table->timestamps();
         });

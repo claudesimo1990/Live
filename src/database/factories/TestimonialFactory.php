@@ -22,7 +22,7 @@ class TestimonialFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
+            'user_id' => rand(1, 10),
             'content' => 'La France est un pays attachant avec de magnifiques monuments et une savoureuse gastronomie',
             'photo' => '/Admin/Images/4CD5sh5YRv.jpg'
         ];

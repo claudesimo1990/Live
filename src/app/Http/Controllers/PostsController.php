@@ -27,7 +27,7 @@ class PostsController extends Controller
 
     public function listeNews(): JsonResponse
     {
-        $posts = Post::where('publish',1)->paginate(4);
+        $posts = Post::where('publish',1)->with('user')->paginate(4);
 
         return response()->json($posts, 200);
     }

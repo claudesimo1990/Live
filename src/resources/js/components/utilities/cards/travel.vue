@@ -4,7 +4,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pb-5">
                <userProfile :user="item.user" :asset="asset" :post-date="item.created_at"></userProfile>
                 <div class="icon--card">
-                    <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
+                    <img :src="item.categorie_id === 1 ? '/img/cube-outline.svg' : '/img/airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
@@ -20,7 +20,7 @@
                 </ul>
                 <hr>
                 <div class="notice notice-warning">
-                    <h6>Kilo disponibles : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
+                    <h6>Kilo disponibles : <b-badge variant="info" class="mx-2 si" v-html="item.kilo + ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
                 </div>
                 <div class="notice notice-warning mt-1">
                     <strong>Message : </strong>
@@ -51,6 +51,10 @@ export default {
     props: ['item','asset'],
     components: {
         userProfile
+    },
+
+    mounted() {
+        console.log(this.userProfile)
     }
 
 }

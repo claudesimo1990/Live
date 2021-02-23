@@ -16,15 +16,15 @@ class AppController extends Controller
     {
         $header = ImageText::where('section', 'header')->latest()->first();
         $about = ImageText::where('section', 'about')->latest()->first();
-        $news = Post::latest()->limit(3)->get();
+        $posts = Post::with('user')->latest()->limit(3)->get();
         $steps = Step::limit(3)->get();
         $destinations = Destination::all();
-        $testimonials = Testimonial::limit(4)->get();
+        $testimonials = Testimonial::with('user')->limit(3)->get();
 
         return view('App.welcome', [
             'header' => $header,
             'about' => $about,
-            'news' => $news,
+            'posts' => $posts,
             'steps' => $steps,
             'destinations' => $destinations,
             'testimonials' => $testimonials

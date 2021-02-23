@@ -14,8 +14,8 @@
                 <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travel.create')}}"><span class="fa fa-road mr-1"></span>Proposer un trajet</a></li>
                 <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packet.create')}}"><span class="fa fa-bank mr-1"></span>Expedier un colis</a></li>
                 @guest
-                    <li class="{{ (request()->is('register')) ? 'menu-active' : '' }}"><a href="{{route('register')}}"><span class='fa fa-user mr-1'></span>Inscription</a></li>
-                    <li class="{{ (request()->is('login')) ? 'menu-active' : '' }}"><a href="{{route('login')}}"><span class='fa fa-sign-in mr-1'></span>Connexion</a></li>
+                    <li class="{{ (request()->is('register')) ? 'menu-active' : '' }}"><a href="{{ route('register') }}"><span class='fa fa-user mr-1'></span>Inscription</a></li>
+                    <li class="{{ (request()->is('login')) ? 'menu-active' : '' }}"><a href="{{ route('login') }}"><span class='fa fa-sign-in mr-1'></span>Connexion</a></li>
                 @else
                     <li class="{{ (request()->is('profile/'. Auth()->id() . '/chat')) ? 'menu-active' : 'test' }}"></li>
                     @if (!is_null(Auth::user()->avatar_original))

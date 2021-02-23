@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Admin;
+use App\Models\Admin;
 use App\Models\Pages\Home;
 use App\Models\Pages\ImageText;
 use App\Models\Pages\Step;

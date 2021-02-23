@@ -185,8 +185,6 @@
             }
         },
         mounted() {
-            console.log('hallo');
-            console.log(this.log_user);
             this.total_kilos = this.travel.kiloAvalable;
             this.total = this.travel.kiloAvalable;
             this.sendUser = this.logUser;

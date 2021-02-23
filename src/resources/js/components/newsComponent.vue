@@ -39,14 +39,14 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3 col-md-9 col-lg-9">
-                    <div v-for="item in laravelData.data" :key="item.id">
+                    <div v-for="(item, index) in laravelData.data" :key="index">
                         <div v-show="travel.show">
-                            <div class="container py-3" v-if="item.categorie_id == 2">
+                            <div class="container py-3" v-if="item !== null && item.categorie_id == 2">
                                 <travel :item="item" :asset="asset"></travel>
                             </div>
                         </div>
                         <div v-show="pack.show">
-                            <div class="container py-3" v-if="item.categorie_id == 1">
+                            <div class="container py-3" v-if="item !== null && item.categorie_id == 1">
                                 <coli :item="item" :asset="asset"></coli>
                             </div>
                         </div>
@@ -65,6 +65,7 @@
 <script>
 
 Vue.component('pagination', require('laravel-vue-pagination'));
+
 import travel from './utilities/cards/travel'
 import coli from './utilities/cards/coli'
 import { store } from '../store/index'
