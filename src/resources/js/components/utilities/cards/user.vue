@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between flex-column">
                     <span class="text-success">Membre verifié</span>
                     <span v-if="user.email_verified_at"><i class="fa fa-user-check mr-2 text-success"></i></span>
                     <span v-else><i class="fa fa-user-check mr-2 text-danger"></i></span>
@@ -40,7 +40,7 @@ export default {
         }
     },
     mounted() {
-        console.log(this.user);
+       //
     }
 
 }

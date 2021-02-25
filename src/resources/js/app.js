@@ -1,13 +1,13 @@
 require('./bootstrap');
-
-import Vue from 'vue/dist/vue';
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 window.Vue = Vue;
 
 import { BootstrapVue }  from 'bootstrap-vue';
 import Notifications from 'vue-notification';
 import VueTyperPlugin from 'vue-typer';
-import { overlay } from "./store/overlay";
+import index from "./store/index";
 
 import ElementUI from 'element-ui';
 import { App, plugin } from '@inertiajs/inertia-vue';
@@ -34,6 +34,9 @@ Vue.use(VueTyperPlugin);
 Vue.use(Datetime);
 Vue.use(ElementUI);
 Vue.use(Notifications);
+Vue.use(Vuex);
+
+window.store = new Vuex.Store(index);
 
 //vee-validate rules
 extend('required', {
@@ -69,14 +72,19 @@ if (el) {
 
     const site = new Vue({
         el: '#main',
+        data() {
+          return {
+            //
+          }
+        },
 
         computed: {
-            getShow: function() {
-                return overlay.getters.OverlayShow;
+            show: function() {
+                return store.state.OverlayShow;
             }
         }
 
-    });
+    }).$mount(main)
 
 }
 

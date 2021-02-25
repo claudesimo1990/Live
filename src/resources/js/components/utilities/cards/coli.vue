@@ -20,7 +20,7 @@
             </ul>
             <hr>
             <div class="notice notice-warning">
-                <h6>Poids du Coli : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
+                <h6>Poids du Coli : <b-badge variant="info" class="mx-2 font-weight-bold px-3 avalaible_kilo" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
             </div>
             <div class="notice notice-warning border-4">
                 <strong class="mr-5">Message : </strong> <strong>Nom de l'objet : </strong><b-badge class="ml-2" variant="info" v-html="item.colis_name"></b-badge>
@@ -34,8 +34,6 @@
                 <showImages :colis-name="item.colis_name" :images="item.images"></showImages>
 
                 <a :href="item.Path" class="btn btn-primary w-100 btn-recherche contact-btn">Contactez l'expediteur</a>
-
-                <div class="float-right"><h6><i class="el-icon-share font-weight-bold"></i></h6></div>
 
             </div>
         </div>
@@ -57,3 +55,11 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+
+.avalaible_kilo {
+    font-size: 15px;
+}
+
+</style>

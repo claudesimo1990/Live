@@ -20,7 +20,11 @@
                 </ul>
                 <hr>
                 <div class="notice notice-warning">
-                    <h6>Kilo disponibles : <b-badge variant="info" class="mx-2 si" v-html="item.kilo + ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
+                    <h6>Kilo disponibles : <b-badge variant="info" class="mx-2 px-3 font-weight-bold avalaible_kilo" v-html="item.kilo + ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
+                </div>
+                <div>
+                    <strong class="quigo-animate-class-css-element mr-3">{{ item.kilo }} <span class="fa fa-envelope"></span></strong>
+                    <span class="fa fa-euro"></span><strong v-html="item.prix"></strong> / <span class="fa fa-envelope"></span>
                 </div>
                 <div class="notice notice-warning mt-1">
                     <strong>Message : </strong>
@@ -33,11 +37,6 @@
                         Contactez le voyageur
                     </a>
                 </div>
-                <div class="float-right"><h6>
-                    <el-tooltip content="Partager le Post" placement="top">
-                        <el-button><i class="el-icon-share font-weight-bold"></i></el-button>
-                    </el-tooltip>
-                </h6></div>
             </div>
         </div>
     </div>
@@ -54,8 +53,16 @@ export default {
     },
 
     mounted() {
-        console.log(this.userProfile)
+        //
     }
 
 }
 </script>
+
+<style lang="scss">
+
+.avalaible_kilo {
+    font-size: 15px;
+}
+
+</style>

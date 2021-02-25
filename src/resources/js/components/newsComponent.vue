@@ -51,8 +51,8 @@
                             </div>
                         </div>
                     </div>
-                   <div class="row mt-4 py-2 px-4">
-                        <pagination :data="laravelData" size="small" align="right" @pagination-change-page="getResults">
+                   <div class="row mt-4 py-2 px-4 float-right">
+                        <pagination :data="laravelData" size="large" align="left" @pagination-change-page="getResults">
                             <span slot="prev-nav">&lt; Previous</span>
                             <span slot="next-nav">Next &gt;</span>
                         </pagination>
@@ -68,7 +68,6 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 
 import travel from './utilities/cards/travel'
 import coli from './utilities/cards/coli'
-import { store } from '../store/index'
 
 export default {
     props: ["keyWatch",'asset'],
@@ -96,7 +95,7 @@ export default {
 
         sortKey: function(val) {
 
-            if (val == 'allNews') {
+            if (val === 'all') {
                 this.showAllNews();
                 return;
 
@@ -110,15 +109,15 @@ export default {
         sortNews: function(cat) {
             if (cat === 'travel') {
                 store.dispatch('setOverlayShow', true);
-                axios.get('travels').then((response) => {
+                axios.get('/api/posts/travels').then((response) => {
                     this.laravelData = response.data;
                     this.title = "Annonces de voyages";
                     store.dispatch('setOverlayShow', false);
                 })
             } else if (cat === 'pack') {
                 store.dispatch('setOverlayShow', true);
-                axios.get('packs').then((response) => {
-                    this.laravelData = response;
+                axios.get('/api/posts/packets').then((response) => {
+                    this.laravelData = response.data;
                     this.title = "Annonces de packets";
                     store.dispatch('setOverlayShow', false);
                 })
@@ -127,7 +126,7 @@ export default {
         showAllNews: function () {
             store.dispatch('setOverlayShow', true);
             axios.get('/api/posts').then((response) => {
-                this.laravelData = response;
+                this.laravelData = response.data;
                 this.title = "Liste d'annonces";
                 store.dispatch('setOverlayShow', false);
             })
@@ -143,16 +142,15 @@ export default {
     },
     mounted() {
         this.getResults();
-        this.sortKey = this.keyWatch !== undefined ? this.keyWatch : 'allNews' ;
+        this.sortKey = this.keyWatch !== undefined ? this.keyWatch : 'all' ;
     },
 }
 </script>
 <style>
     span.vorHumanns {
-        font-weight: bold;
-        color: gray;
-        position: absolute;
-        bottom: 25px;
-        left: 54px;
+    font-weight: bold;
+    color: gray;
+    position: absolute;
+    bottom: 25px;
 }
 </style>

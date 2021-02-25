@@ -28,7 +28,7 @@
 
     <card-user></card-user>
 
-    <b-overlay :show="getShow" rounded="sm">
+    <b-overlay :show="show" rounded="sm">
 
         <x-top-bar></x-top-bar>
 

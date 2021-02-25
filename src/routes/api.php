@@ -22,4 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/galerie/store',[ImagesController::class, 'store'])->name('Images.store');
 
-route::get('posts',[PostsController::class, 'listeNews']);
+route::get('posts',[PostsController::class, 'posts'])->name('Posts.index');
+route::get('posts/travels',[PostsController::class, 'travels'])->name('Posts.travels');
+route::get('posts/packets',[PostsController::class, 'packets'])->name('Posts.packets');
