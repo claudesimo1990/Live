@@ -45,4 +45,11 @@ class PostsController extends Controller
 
         return response()->json($packets, 200);
     }
+
+    public function all()
+    {
+        $packets = Post::where('publish',1)->with('user')->get();
+
+        return response()->json($packets, 200);
+    }
 }

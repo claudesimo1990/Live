@@ -119,7 +119,7 @@ export default {
 
         const el = this;
 
-        axios.get('/posts')
+        axios.get('/api/all-posts')
         .then(function (response) {
             console.log(response.data);
 

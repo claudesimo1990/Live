@@ -25,3 +25,4 @@ Route::post('/galerie/store',[ImagesController::class, 'store'])->name('Images.s
 route::get('posts',[PostsController::class, 'posts'])->name('Posts.index');
 route::get('posts/travels',[PostsController::class, 'travels'])->name('Posts.travels');
 route::get('posts/packets',[PostsController::class, 'packets'])->name('Posts.packets');
+route::get('/all-posts',[PostsController::class, 'all'])->name('Posts.all');
