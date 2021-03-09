@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Goaubled</title>
+    <title>Goaubled | home</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -20,7 +20,7 @@
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 </head>
-<body id="body">
+<body>
 
 <div id="main">
 

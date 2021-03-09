@@ -42,7 +42,7 @@
         </div>
     </x-testimonial>
 
-    <section id="call-to-action" class="quigo-animate-class-css-element">
+   <!-- <section id="call-to-action" class="quigo-animate-class-css-element">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 text-center text-lg-left">
@@ -55,6 +55,6 @@
             </div>
 
         </div>
-    </section>
+    </section> -->
 
 @endsection

@@ -17,10 +17,6 @@ import { ValidationProvider,ValidationObserver, extend } from 'vee-validate';
 
 import { required,integer,numeric } from 'vee-validate/dist/rules';
 
-//css
-import 'element-ui/lib/theme-chalk/index.css';
-import 'vue-datetime/dist/vue-datetime.css';
-
 
 import moment0 from "moment";
 
