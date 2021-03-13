@@ -19,7 +19,7 @@
 
     </x-about-us>
 
-    <how-work :steps="{{ $steps }}" moreLink="{{ route('howItWork') }}"></how-work>
+    <how-work :steps="{{ $steps }}" more-link="{{ route('howItWork') }}"></how-work>
 
     <destinations :destinations="{{ $destinations }}"></destinations>
 

@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
 @section('content')
-    <how-work :steps="{{ $steps }}" moreLink=""></how-work>
+    <how-work :steps="{{ $steps }}" more-link=""></how-work>
 @endsection
