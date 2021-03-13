@@ -69,7 +69,7 @@
               <a class="footer--link dark-grey-text" href="{{ route('termsOfservice') }}">Charte de confidential</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="{{ route('confidentialityCharter') }}">conditions generales d'utilisation</a>
+              <a class="footer--link dark-grey-text" href="{{ route('privacy') }}">conditions generales d'utilisation</a>
             </p>
             <p>
               <a class="footer--link dark-grey-text" href="{{ route('contactUs') }}">nous Contactez</a>

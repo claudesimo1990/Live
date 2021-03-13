@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DestinationsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\StepController;
+use App\Http\Controllers\Admin\PagesController;
 
 Route::prefix('admin')->group(function () {
 
@@ -16,7 +17,6 @@ Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => 'auth:admin'], function () {
 
-        Route::get('/', [AdminController::class, 'home'])->name('admin.home');
         Route::get('/home',[AdminController::class, 'home'])->name('admin.home');
         Route::get('/galerie/create',[ImagesController::class, 'create'])->name('images.create');
         Route::get('/galerie/index',[ImagesController::class, 'index'])->name('images.index');
@@ -35,6 +35,16 @@ Route::prefix('admin')->group(function () {
         //destinations
         Route::post('/destinations/create', [DestinationsController::class, 'store'])->name('destinations.store');
         Route::post('/destinations/destroy/{destination}', [DestinationsController::class, 'destroy'])->name('destinations.destroy');
+
+        //pages
+        Route::post('/frontend/page/create', [PagesController::class, 'store']);
+
+        Route::get('/frontend/about/create', [PagesController::class, 'about'])->name('frontend.about.create');
+        Route::get('/frontend/principes/create', [PagesController::class, 'principes'])->name('frontend.principes.create');
+        Route::get('/frontend/privacy/create', [PagesController::class, 'privacy'])->name('frontend.privacy.create');
+        Route::get('/frontend/termsOfservice/create', [PagesController::class, 'termsOfservice'])->name('frontend.termsOfservice.create');
+        Route::get('/frontend/agb/create', [PagesController::class, 'agb'])->name('frontend.agb.create');
+        Route::get('/frontend/impressum/create', [PagesController::class, 'impressum'])->name('frontend.impressum.create');
 
     });
 

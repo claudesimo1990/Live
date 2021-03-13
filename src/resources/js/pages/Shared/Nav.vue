@@ -19,7 +19,6 @@
                 </nav>
             </div>
 
-            <div class="sb-sidenav-menu-heading">Pages Settings</div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Images
@@ -31,20 +30,31 @@
                     <inertia-link class="nav-link" :href="$route('images.index')">Galerie</inertia-link>
                 </nav>
             </div>
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHome" aria-expanded="false" aria-controls="collapseHome">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                Home
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseHome" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" :href="$route('home.edit')">Edit</a>
-                </nav>
-            </div>
-            <a class="nav-link" href="tables.html">
-                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                Tables
-            </a>
+
+            <div class="sb-sidenav-menu-heading">Pages Settings</div>
+
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" :href="$route('home.edit')">Home</a>
+            </nav>
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" :href="$route('frontend.about.create')">About</a>
+            </nav>
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" :href="$route('frontend.principes.create')">principes</a>
+            </nav>
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" :href="$route('frontend.privacy.create')">privacy</a>
+            </nav>
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" :href="$route('frontend.termsOfservice.create')">termsOfservice</a>
+            </nav>
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" :href="$route('frontend.impressum.create')">impressum</a>
+            </nav>
+            <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" :href="$route('frontend.agb.create')">agb</a>
+            </nav>
+
         </div>
     </div>
 </template>

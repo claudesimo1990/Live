@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container my-2">
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -15,10 +15,6 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid p-2">
-                        <h1 v-html="title"></h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active" v-html="title"></li>
-                        </ol>
                         <slot></slot>
                     </div>
                 </main>

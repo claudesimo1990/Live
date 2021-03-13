@@ -1,10 +1,12 @@
 <template>
-    <a href="#" @click.prevent="displayProfile()">
+    <a href="#">
         <div class="border my-3 px-2 rounded">
             <div class="profile-block">
-                <img class="rounded-circle z-depth-2 mt-1 ml-1 user__bild_post" width="96" alt="100x100" :src="user.avatar"
-                     data-holder-rendered="true">
-                <h5 class="text-start mt-2"><b-badge variant="Light">{{ user.name }}</b-badge></h5>
+                <div class="d-flex flex-column justify-content-center align-items-center p-2 my-2">
+                    <img class="rounded-circle z-depth-2 mt-1 ml-1 user__bild_post" width="96" alt="100x100" :src="user.avatar"
+                         data-holder-rendered="true">
+                    <div class="text-start mt-2 font-weight-bold" v-html="user.name"></div>
+                </div>
                 <div class="notice justify-center text-center notice-success stars">
                     <div class="d-flex justify-content-between">
                         <div class="strong">Votes :</div>
@@ -36,11 +38,16 @@ export default {
 
     data: function () {
         return {
-
+            display_id: ''
+        }
+    },
+    methods: {
+        displayProfile() {
+            console.log('yesssssss');
         }
     },
     mounted() {
-       //
+
     }
 
 }

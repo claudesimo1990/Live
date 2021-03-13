@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Goaubled | home</title>
+    <title>Goaubled | @yield('name', 'home')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta content="@yield('keywords')" name="keywords">
+    <meta content="@yield('description')" name="description">
     <link rel="icon" type="image/png" href="{{ asset('/img/cube-outline.svg') }}"/>
 
     <link href="{{ asset('/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -29,8 +29,6 @@
     <card-user></card-user>
 
     <b-overlay :show="show" rounded="sm">
-
-        <x-top-bar></x-top-bar>
 
         @include("layouts/includes/nav")
 

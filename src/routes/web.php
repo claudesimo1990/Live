@@ -10,14 +10,18 @@ use Illuminate\Support\Facades\Route;
 //pages
 Route::get('/', [AppController::class,'home'])->name('accueil');
 
-Route::get('/whoAreWe', [PagesController::class, 'whoAreWe'])->name('whoAreWe');
-Route::get('/agb', [PagesController::class, 'agb'])->name('agb');
-Route::get('/confidentialityCharter', [PagesController::class, 'confidentialityCharter'])->name('confidentialityCharter');
-Route::get('/contactUs', [PagesController::class, 'contactUs'])->name('contactUs');
-Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
-Route::get('/impressum', [PagesController::class, 'impressum'])->name('impressum');
-Route::get('/principes', [PagesController::class, 'principes'])->name('principes');
-Route::get('/termsOfservice', [PagesController::class, 'termsOfservice'])->name('termsOfservice');
+Route::get('/about-us', [AppController::class, 'about'])->name('whoAreWe');
+Route::get('/principes', [AppController::class, 'principes'])->name('principes');
+Route::get('/privacy', [AppController::class, 'privacy'])->name('privacy'); //conditions generales d'utilisation
+Route::get('/termsOfservice', [AppController::class, 'termsOfservice'])->name('termsOfservice');
+Route::get('/impressum', [AppController::class, 'impressum'])->name('impressum');
+Route::get('/agb', [AppController::class, 'agb'])->name('agb');
+
+
+Route::get('/faq', [AppController::class, 'faq'])->name('faq');
+
+Route::get('/contact-us', [AppController::class, 'contactUs'])->name('contactUs');
+
 
 Route::get('/howItWork', [AppController::class, 'howItWork'])->name('howItWork');
 Route::get('/home', [HomeController::class, 'index'])->name('home');

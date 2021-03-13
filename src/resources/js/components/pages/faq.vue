@@ -1,20 +1,21 @@
 <template>
     <section class="bg-page-header mb-4">
-        <div v-for="el in fragen" :key="el.id" class="col-md-12 faq">
-            <h4 class="title my-4">{{el.title}}</h4>
-            <div v-for="item in el.Fragen" :key="item.id">
-                <button class="accordion">{{item.frage.frage}}</button>
-                <div class="panel">
+        <el-collapse v-for="el in fragen" :key="el.id" v-model="activeNames" @change="handleChange">
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <h4 class="font-weight-bold" v-html="el.title"></h4>
+                </div>
+                <el-collapse-item v-for="item in el.Fragen" :key="item.id" :title="item.frage.frage" :name="item.id">
                     <div v-if="item.frage.array">
                         <em class="font-weight-bold mt-4" v-html="item.frage.title"></em>
                         <ul class="my-2">
                             <li v-for="ant in item.frage.antwort" :key="ant" v-html="ant"></li>
                         </ul>
                     </div>
-                    <p v-else v-html="item.frage.antwort"></p>
-                </div>
-            </div>
-        </div>
+                    <div v-else v-html="item.frage.antwort"></div>
+                </el-collapse-item>
+            </el-card>
+        </el-collapse>
     </section>
 </template>
 <script>
@@ -22,59 +23,31 @@
     export default {
         data: function () {
             return {
-                fragen: []
+                fragen: [],
+                activeNames: ['1']
             }
         },
         created() {
             this.fragen = faqs.FAQ;
+        },
+        methods: {
+            handleChange(val) {
+                console.log(val);
+            }
         }
     }
 </script>
-<style lang="scss" scoped>
-    p{
-        color: black !important;
-        padding: 6px 19px 14px 16px;
-    }
-    .accordion {
-        color: black;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        text-align: left;
-        outline: none;
-        transition: 0.4s;
-    }
-    .active, .accordion:hover {
-        background-color: #ccc;
-    }
-    .active:after {
-        content: "\2212";
-    }
-    .panel {
-        padding: 0 18px;
-        background-color: white;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-    }
-    .title {
-        margin-bottom: 20px;
-        color: #8bc73d;
-        text-align: center;
-    }
-    ul {
-        list-style: none;
+<style lang="scss">
+    h4 {
+        color: #0c2e8a;
         padding: 0;
+        margin: 0;
     }
-    li {
-        padding-left: 1.3em;
+    .bg-page-header {
+        background-color: rgb(233, 236, 239);
     }
-    li:before {
-    content: "\f00c"; /* FontAwesome Unicode */
-        font-family: FontAwesome;
-        display: inline-block;
-        margin-left: -1.3em; /* same as padding-left set on li */
-        width: 1.3em; /* same as padding-left set on li */
-        color:#8bc73d;
+    .el-collapse-item__header {
+        font-size: 16px !important;
+        font-weight: bold;
     }
 </style>

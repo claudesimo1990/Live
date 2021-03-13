@@ -42,19 +42,4 @@
         </div>
     </x-testimonial>
 
-   <!-- <section id="call-to-action" class="quigo-animate-class-css-element">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 text-center text-lg-left">
-                    <h3 class="cta-title">Contactez nous</h3>
-                    <p class="cta-text">pour vos besoins de Publicites, vueillez contactez notre Team Marketing au numero suivant. oubien laisser un message et on vous contactera</p>
-                </div>
-                <div class="col-lg-3 cta-btn-container text-center">
-                    <a class="cta-btn align-middle" href="#">Contact</a>
-                </div>
-            </div>
-
-        </div>
-    </section> -->
-
 @endsection

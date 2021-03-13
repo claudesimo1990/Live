@@ -78,7 +78,6 @@ import adminLayout from './Layout/master';
         },
         data() {
             return {
-
                 trajets: []
             };
         },

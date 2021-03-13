@@ -17,6 +17,10 @@ import { ValidationProvider,ValidationObserver, extend } from 'vee-validate';
 
 import { required,integer,numeric } from 'vee-validate/dist/rules';
 
+import Editor from 'vue-editor-js/src/index';
+
+Vue.use(Editor);
+
 
 import moment0 from "moment";
 

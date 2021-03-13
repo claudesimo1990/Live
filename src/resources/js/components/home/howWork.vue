@@ -13,7 +13,7 @@
                         </el-card>
                     </el-timeline-item>
                     <el-timeline-item>
-                        <el-card>
+                        <el-card v-if="moreLink">
                             <b-link :href="moreLink" class="btn btn-secondary btn-lg btn-block mt-4 quigo-animate-class-css-element">lire la suite</b-link>
                         </el-card>
                     </el-timeline-item>

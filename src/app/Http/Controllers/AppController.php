@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Destination;
 use App\Models\Pages\ImageText;
+use App\Models\Pages\Page;
 use App\Models\Pages\Step;
 use App\Models\Post;
 use App\Models\Testimonial;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class AppController extends Controller
@@ -31,16 +35,67 @@ class AppController extends Controller
         ]);
     }
 
-    public function index(){
+    public function about(){
 
-        $latest_news = Post::where('publish',1)->with('user')->latest()->limit(3)->get();
-        $users = User::where('is_admin',0)->latest()->limit(3)->get();
+        $page = Page::where('page', 'about')->latest()->first();
 
-        return view('App.accueil',compact('latest_news','users'));
+        return view('pages.about',compact('page'));
     }
 
+    public function agb(){
+
+        $page = Page::where('page', 'agb')->latest()->first();
+
+        return view('pages.about',compact('page'));
+    }
+
+    public function privacy(){
+
+        $page = Page::where('page', 'privacy')->latest()->first();
+
+        return view('pages.privacy',compact('page'));
+    }
+
+    public function impressum(){
+
+        $page = Page::where('page', 'impressum')->latest()->first();
+
+        return view('pages.impressum',compact('page'));
+    }
+
+    public function termsOfservice(){
+
+        $page = Page::where('page', 'termsOfservice')->latest()->first();
+
+        return view('pages.termsOfservice',compact('page'));
+    }
+
+    public function principes(){
+
+        $page = Page::where('page', 'principes')->latest()->first();
+
+        return view('pages.principes',compact('page'));
+    }
+
+    /**
+     * cette page est une page particuliere
+     * car elle est generer directement par l utilisateur(Admin)
+     * @return Application|Factory|View
+     */
     public function howItWork(){
 
-        return view('pages.howItWork');
+        $steps = Step::all();
+
+        return view('pages.howItWork', compact('steps'));
+    }
+
+    /**
+     * cette page est une page particuliere
+     * car elle est generer directement par l utilisateur(Admin)
+     * @return Application|Factory|View
+     */
+    public function faq(){
+        //viendra de la base de donnees
+        return view('pages.faq');
     }
 }
